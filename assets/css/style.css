@@ -130,7 +130,7 @@
      position: relative;
      margin-top: 46.4px;
      padding-top: 50%;
-     background: url(/assets/image/slider.jpg) top center / cover no-repeat ;
+     background: url(../image/slider.jpg) top center / cover no-repeat ;
      
 }
 
@@ -277,6 +277,8 @@
     display: inline-block;
     margin: 15px 0px;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
 }
 .ticket-buy-btn:hover{
     color: #000;
@@ -410,6 +412,8 @@
     padding: 11px 17px;
     margin: 16px 0px; 
     float: right;
+    appearance: none;
+    -webkit-appearance: none;
 }
 .submit-button:hover{
     background-color: #ccc;
