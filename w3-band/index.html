@@ -213,6 +213,7 @@
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.modal');
         const modalContainer = document.querySelector('.js-modal-container');
+        const modalCloseBtn = document.querySelector('.modal-close');
 
         function showBuyTicket() {
             modal.classList.add('open');
@@ -224,7 +225,7 @@
             buyBtn.addEventListener('click', showBuyTicket);
         }
         modal.addEventListener('click', hideBuyTicket)
-
+        modalCloseBtn.addEventListener('click',hideBuyTicket)
         modalContainer.addEventListener('click', function (event) {
             event.stopPropagation();
         })
