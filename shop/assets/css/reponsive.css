@@ -141,7 +141,7 @@
     }
 }
 /* Small Mobile  */
-@media(max-width:348px){
+@media(max-width:380px){
     .header-search-input{
         padding: 0 0 0 2px;
     }
