@@ -104,6 +104,9 @@
     color: var(--white-color);
     font-size: 3rem;
 }
+.history-search{
+    width: 100%;
+}
 
 .mobile-category-list{
     display: flex;
@@ -135,5 +138,11 @@
     }
     .header-search-cart-icon{
         padding-right: 24px;
+    }
+}
+/* Small Mobile  */
+@media(max-width:348px){
+    .header-search-input{
+        padding: 0 0 0 2px;
     }
 }
