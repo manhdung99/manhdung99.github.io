@@ -157,7 +157,30 @@
   .song.active .title {
     color: #fff;
   }
-  
+  .option{
+    position: relative;
+  }
+  .option-list{
+    list-style: none;
+    position: absolute;
+    width: 185px;
+    right: -16px;
+    background-color: #fff;
+    top: -18px;
+    border-radius: 10px;
+    border: 1px solid #afa5a5;
+    display: none;
+  }
+  .option-list li{
+    margin: 0 16px;
+    line-height: 28px;
+    color: #000;
+    font-size: 12px;
+    border-bottom: solid 1px #e4d0d0;
+  }
+  .option.active .option-list{
+    display: block;
+  }
   .song .thumb {
     width: 44px;
     height: 44px;

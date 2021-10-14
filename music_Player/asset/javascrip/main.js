@@ -14,6 +14,8 @@ const nextBtn = $('.btn-next');
 const prevBtn = $('.btn-prev');
 const randomBtn = $('.btn-random');
 const repeatBtn = $('.btn-repeat');
+const dashBoard = $('.dashboard');
+const optionList = $('.option-list');
 
 const app =  {
     curentIndex : 0,
@@ -69,7 +71,10 @@ const app =  {
             const _this = this;
             const cdWidth  = cd.offsetWidth; 
             
-
+            //Click vao window 
+            dashBoard.onclick = function(){
+            _this.checkOptionOpen();
+            }
             //Xử lý CD quay 
             const cdThumbAnimate = cdThumb.animate([
                 {transform : 'rotate(360deg)'}
@@ -127,6 +132,7 @@ const app =  {
             }
             // Khi nhấn nút next 
             nextBtn.onclick = function(){
+                _this.checkOptionOpen();
                  if(_this.isRandom){
                     _this.randomSong();
                 }else{
@@ -138,6 +144,7 @@ const app =  {
             }
             //Khi nhấn nút prev
             prevBtn.onclick = function(){
+                _this.checkOptionOpen();
                 if(_this.isRandom){
                     _this.randomSong();
                 }else{
@@ -149,12 +156,14 @@ const app =  {
             }
             //Khi nhấn nút random
             randomBtn.onclick = function(){
+                _this.checkOptionOpen();
                 _this.isRandom = !_this.isRandom;
                 _this.setConfig('isRandom',_this.isRandom);
                 randomBtn.classList.toggle('active');
             }
             //Khi ấn nút repeat 
             repeatBtn.onclick = function(){
+                _this.checkOptionOpen();
                 _this.isRepeat = !_this.isRepeat;
                 _this.setConfig('isRepeat',_this.isRepeat);
                 repeatBtn.classList.toggle('active')
@@ -163,20 +172,33 @@ const app =  {
             playlist.onclick= function(e){
                 const songNode = e.target.closest('.song:not(.active)');
                 if(songNode || e.target.closest('.option')){
+                    console.log(e.target.className)
+                    if(e.target.className.includes('option-item')||e.target.className.includes('option-list')){
+                        e.stopPropagation();
+                    }else
+                    // Xử lý khi click vào option
+                    if(e.target.closest('.option')){
+                        _this.checkOptionOpen();
+                        if(e.target.parentNode.className.includes('option')){
+                            const optionCurrent = e.target.parentNode.getAttribute('option-index');
+                            $(`[option-index= "${optionCurrent}"]`).classList.add('active')
+                        }else{
+                            const optionCurrent = e.target.getAttribute('option-index');
+                            $(`[option-index= "${optionCurrent}"]`).classList.add('active')
+                        }                       
+                    }
                     // Xử lý khi click vào song 
-                    if(songNode){
+                    else if(songNode){
+                        _this.checkOptionOpen();
                         _this.curentIndex = songNode.dataset.index;
                         _this.loadCurrentSong();
                         audio.play();
                         _this.activeSong();
-                    }
-                    // Xử lý khi click vào option
-                    if(e.target.closest('.option')){
-                    }
+                    }                   
+                }else{
+                    _this.checkOptionOpen();
                 };
             }
-           
-
     },
     //Xử lý render ra bài hát
     render: function(){
@@ -190,8 +212,13 @@ const app =  {
                 <h3 class="title">${song.name}</h3>
                 <p class="author">${song.singer}</p>
             </div>
-            <div class="option">
+            <div class="option" option-index = "${index}">
                 <i class="fas fa-ellipsis-h"></i>
+                <ul class="option-list">
+                <li class="option-item">${song.name}</li>
+                <li class="option-item">Xoá</li>
+                <li class="option-item">Chi tiết</li>
+                </ul>
             </div>
         </div>`
         });
@@ -216,6 +243,14 @@ const app =  {
         cdThumb.style.backgroundImage = `url(${this.currentSong.image})`;
         audio.src = this.currentSong.path; 
         
+    },
+    checkOptionOpen:function(){
+       const options= $$("[option-index]");
+       options.forEach(function(option){
+            if(option.className.includes('active')){
+                option.classList.remove('active');
+            };
+       })
     },
     //Load config ra 
     loadConfig:function(){
@@ -270,13 +305,12 @@ const app =  {
     },
     // Hàm chạy toàn bộ chương trình 
     start: function(){ 
+        
         this.loadConfig();
         this.defineProperties();
         this.loadCurrentSong();
         this.render();
         this.handerEvents();
-
-        // Load trạng thái ban đầu 
         randomBtn.classList.toggle('active',this.isRandom);
         repeatBtn.classList.toggle('active',this.isRepeat);
        
