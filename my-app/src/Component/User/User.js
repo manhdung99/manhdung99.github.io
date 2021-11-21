@@ -12,6 +12,7 @@ const  User  = ({getList,deleteUserRedux,users}) => {
           getList(data);    
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
     
 
@@ -43,8 +44,8 @@ const mapStateToProps = (state) =>{
 }    
 const mapDispatchToProps  = (dispatch) =>{
     return {
-        deleteUserRedux : (userDelete) => dispatch({type:'DELETE',payload:userDelete}),
-        getList : (list) => dispatch({type:'List',payload : list})
+        deleteUserRedux : (userDelete) => dispatch({type:'DELETE_USER',payload:userDelete}),
+        getList : (list) => dispatch({type:'LIST_USER',payload : list})
     }
 }
 

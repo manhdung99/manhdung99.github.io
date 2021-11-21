@@ -6,7 +6,6 @@ import { Modal } from 'react-bootstrap'
 const ListPost = () =>{
     const history = useHistory()
     const [posts,setPosts] = useState([])
-    const [newData,setNewData] = useState([])
     const [loading,setLoading] = useState(true)
     const [show, setShow] = useState(false);
     const [title,setTitle] = useState('')

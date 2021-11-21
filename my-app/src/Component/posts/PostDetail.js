@@ -31,6 +31,7 @@ const PostDetail  = () =>{
             return () => {
                 ourRequest.cancel('Cancel by user') // <-- 3rd step
               }
+              // eslint-disable-next-line react-hooks/exhaustive-deps
         },[])
     const handleBack = () =>{
         history.push("/post")
