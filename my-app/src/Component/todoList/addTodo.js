@@ -1,14 +1,12 @@
 import { Modal } from 'react-bootstrap'
-import { useEffect,useState } from 'react'
+import {useState } from 'react'
 import { connect } from 'react-redux'
 import React from 'react'
 import axios from 'axios'
 
  const AddTodo = ({showAddForm,handleCloseAddForm,addListTodo}) => {
 
-        useEffect(()=>{
 
-        })
 
         const [workName,setWorkName] = useState('')
         const [startDate,setStartDate] = useState('')
