@@ -1,0 +1,33 @@
+
+    .post-detail-container {
+        width: 60%;
+        margin: 30px auto;
+        color: white;
+        border: 2px solid gray;
+        padding: 0 30px;
+      .post-id {
+          text-align: center;
+      }
+    }
+
+
+.back-button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #031321;
+    color: rgba(255, 255, 255, 0.4);
+}
+.loading-wrap{
+    display: flex;
+    .loading{
+        margin: 40px auto;
+        color: #fff;
+    }
+}

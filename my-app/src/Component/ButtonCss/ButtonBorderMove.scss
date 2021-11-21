@@ -1,0 +1,42 @@
+.btn-border-move {
+  position: relative;
+  top: 250px;
+  left: 22.1%;
+  background: none;
+  color: #3498db;
+  border: 2px solid #3498db;
+  padding: 14px 50px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all linear 1s;
+
+  &:after,
+  &:before {
+    position: absolute;
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: #2d3426;
+    transition: all ease 0.6s;
+    transform: skew(45deg);
+  }
+  &:after {
+    top: -2px;
+    left: 15%;
+  }
+  &:before {
+    bottom: -2px;
+    right: 15%;
+  }
+  &:hover {
+    &:before {
+      right: 80%;
+    }
+  }
+  &:hover {
+    &:after {
+      left: 80%;
+    }
+  }
+}
