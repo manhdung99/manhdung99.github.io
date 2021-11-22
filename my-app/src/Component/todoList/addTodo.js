@@ -6,13 +6,34 @@ import axios from 'axios'
 
  const AddTodo = ({showAddForm,handleCloseAddForm,addListTodo}) => {
 
-
-
         const [workName,setWorkName] = useState('')
         const [startDate,setStartDate] = useState('')
         const [endDate,setEndDate] = useState('')
 
+        const handleCloseForm = () =>{
+            handleCloseAddForm();
+            setWorkName('');
+            setStartDate('');
+            setEndDate('');
+        }
+
         const handleAddTodo = async (workName,startDate,endDate) =>{
+            if(!workName){
+                alert("Work Name is Empty!")
+                return;
+            }
+            if(!startDate){
+                alert("Start Date is Empty!")
+                return;
+            }
+            if(!endDate){
+                alert("End Date is Empty!")
+                return;
+            }
+            if(Date.parse(startDate)>Date.parse(endDate)){
+                alert("End Date must be greater Start Date!")
+                return;
+            }
             let todo = 
                 { 
                     "workName": workName,
@@ -20,7 +41,6 @@ import axios from 'axios'
                     "endDate": endDate,
                     "todoStatus": "Planing"
                 }    
-                console.log(todo)      
             let res = await axios.post('http://localhost:8081/todo/add',todo)
             addListTodo(res.data)
             handleCloseAddForm()
@@ -28,7 +48,7 @@ import axios from 'axios'
         }
     return (
         <div>
-            <Modal show={showAddForm} onHide={handleCloseAddForm}>
+            <Modal show={showAddForm} onHide={handleCloseForm}>
         <div className = "add-new-wrap">
         <h2 className = "add-new-title">---ADD NEW TODO---</h2>
         <div className = "input-data" >
@@ -51,27 +71,21 @@ import axios from 'axios'
         </div>
         <button
         onClick = {() =>handleAddTodo(workName,startDate,endDate)}
-        className = "btn-add-new"
+        className = "btn-add-new-todo"
         >ADD</button>
+        <button
+        onClick = {handleCloseForm}
+        className = "btn-add-new-cancel"
+        >Cancel</button>
         </div>
       </Modal>
         </div>
     )
-    
-}
-
-const mapStateToProps = (state) =>{
-    return {
-        todos : state.todos
-   }
-    
-   }    
+}    
    const mapDispatchToProps  = (dispatch) =>{
        return {
-           deleteUserRedux : (userDelete) => dispatch({type:'DELETE',payload:userDelete}),
-           getListTodo : (list) => dispatch({type:'LIST_TODO',payload : list}),
            addListTodo : (todo) => dispatch({type:'ADD_TODO',payload : todo})
        }
    }
 
-export default connect(mapStateToProps,mapDispatchToProps) (AddTodo);
+export default connect(null,mapDispatchToProps) (AddTodo);
