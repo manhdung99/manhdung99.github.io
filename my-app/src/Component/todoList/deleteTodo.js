@@ -5,17 +5,12 @@ import axios from "axios";
 
 const DeleteTodo = ({showDeleteForm,handleCloseDeleteForm,todoDelete,deleteTodo}) =>{
 
-
-
-        const handleDeleteTodo = async () =>{
-            
-             await axios.delete(`http://localhost:8081/todo/delete/${todoDelete.id}`)
+        const handleDeleteTodo = async () =>{           
+            await axios.delete(`http://localhost:8081/todo/delete/${todoDelete.id}`)
             deleteTodo(todoDelete.id)
             handleCloseDeleteForm();
         } 
-
         return (
-
         <Modal show={showDeleteForm} onHide={handleCloseDeleteForm}>
         <div className = "delete-wrap">
         <h1 className = "delete-title">Delete Todo</h1>
@@ -38,5 +33,4 @@ const mapDispatchToProps  = (dispatch) =>{
         deleteTodo : (id) => dispatch({type:'DELETE_TODO',payload:id})
     }
 }
-
 export default connect(null,mapDispatchToProps) (DeleteTodo);

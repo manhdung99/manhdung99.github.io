@@ -15,18 +15,30 @@ const rootReducer = (state = initState, action) => {
         todos: action.payload,
       };
     case "ADD_TODO":
+      {
       let newTodos = [...state.todos, action.payload];
       return {
         ...state,
         todos: [...newTodos],
-      };
+      }
+    };
     case "DELETE_TODO":
-       let newDeleteTodos = [...state.todos];
-       newDeleteTodos = newDeleteTodos.filter(newTodo => newTodo.id !== action.payload)
+      {
+       let newTodos = [...state.todos];
+       newTodos = newTodos.filter(newTodo => newTodo.id !== action.payload)
       return {
         ...state,
-        todos: [...newDeleteTodos],
-      };
+        todos: [...newTodos],
+      }};
+      case "UPDATE_TODO":
+      {
+       let newTodos = [...state.todos];
+       let objIndex = newTodos.findIndex((obj) => obj.id === action.payload.id);
+       newTodos[objIndex] = action.payload;
+      return {
+        ...state,
+        todos: [...newTodos],
+      }};
     case "LIST_USER":
       return {
         ...state,

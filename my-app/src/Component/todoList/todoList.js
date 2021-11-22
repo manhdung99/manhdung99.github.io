@@ -5,13 +5,16 @@ import axios from "axios";
 import AddTodo from "./addTodo";
 import DeleteTodo from "./deleteTodo";
 import { connect } from "react-redux";
+import EditTodo from "./editTodo";
 
-const TodoList = ({ getListTodo, todos }) => {
+const TodoList = ({ getListTodo, todos, updateTodo }) => {
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
-  const [todoDelete,setTodoDelete] = useState({})
+  const [todoDelete, setTodoDelete] = useState({});
+  const [todoEdit, setTodoEdit] = useState({});
 
+  let isEmptyEditTodo = Object.keys(todoEdit).length === 0;
   useEffect(() => {
     const ourRequest = axios.CancelToken.source();
     async function fetchData() {
@@ -34,22 +37,36 @@ const TodoList = ({ getListTodo, todos }) => {
     return () => {
       ourRequest.cancel("Cancel by user"); // <-- 3rd step
     };
-              // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const handleEditTodo = async (todo) => {
+    //Save data
+    if ((isEmptyEditTodo === false) & (todoEdit.id === todo.id)) {
+      let res = await axios.put(
+        `http://localhost:8081/todo/${todoEdit.id}`,
+        todoEdit
+      );
+      updateTodo(res.data);
+      setTodoEdit({});
+      return;
+    }
+    // Edit data
+    setTodoEdit(todo);
+    return;
+  };
   const handleCloseAddForm = () => setShowAddForm(false);
   const handleShowAddForm = () => setShowAddForm(true);
   const handleCloseDeleteForm = () => setShowDeleteForm(false);
   const handleShowDeleteForm = (todo) => {
     setShowDeleteForm(true);
-    setTodoDelete(todo)
-  }
+    setTodoDelete(todo);
+  };
   return (
     <div className="todo-container">
       <DeleteTodo
         showDeleteForm={showDeleteForm}
         handleCloseDeleteForm={handleCloseDeleteForm}
-        todoDelete = {todoDelete}
+        todoDelete={todoDelete}
       />
       <AddTodo
         showAddForm={showAddForm}
@@ -76,14 +93,36 @@ const TodoList = ({ getListTodo, todos }) => {
             todos.map((todo, index) => (
               <tr className="todo-list" key={todo.id}>
                 <td className="todo-item todo-id">{index + 1}</td>
-                <td className="todo-item">{todo.workName}</td>
-                <td className="todo-item">{todo.startDate}</td>
-                <td className="todo-item">{todo.endDate}</td>
-                <td className="todo-item">{todo.todoStatus}</td>
+                {isEmptyEditTodo ? (
+                  <>
+                    <td className="todo-item">{todo.workName}</td>
+                    <td className="todo-item">{todo.startDate}</td>
+                    <td className="todo-item">{todo.endDate}</td>
+                    <td className="todo-item">{todo.todoStatus}</td>
+                  </>
+                ) : todo.id === todoEdit.id ? (
+                  <EditTodo todoEdit={todoEdit} setTodoEdit={setTodoEdit} />
+                ) : (
+                  <>
+                    <td className="todo-item">{todo.workName}</td>
+                    <td className="todo-item">{todo.startDate}</td>
+                    <td className="todo-item">{todo.endDate}</td>
+                    <td className="todo-item">{todo.todoStatus}</td>
+                  </>
+                )}
                 <td className="todo-item todo-action">
-                  <button className="btn-todo edit">Edit</button>
                   <button
-                    onClick={()=>handleShowDeleteForm(todo)}
+                    onClick={() => {
+                      handleEditTodo(todo);
+                    }}
+                    className="btn-todo edit"
+                  >
+                    {isEmptyEditTodo === false && todo.id === todoEdit.id
+                      ? "Save"
+                      : "Edit"}
+                  </button>
+                  <button
+                    onClick={() => handleShowDeleteForm(todo)}
                     className="btn-todo delete"
                   >
                     Delete
@@ -109,10 +148,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteUserRedux: (userDelete) =>
-    dispatch({ type: "DELETE", payload: userDelete }),
     getListTodo: (list) => dispatch({ type: "LIST_TODO", payload: list }),
-    addListTodo: (todo) => dispatch({ type: "LIST_TODO", payload: todo }),
+    updateTodo: (todo) => dispatch({ type: "UPDATE_TODO", payload: todo }),
   };
 };
 
