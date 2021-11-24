@@ -3,6 +3,8 @@ import ButonCss from './Component/ButtonCss/ButonCss';
 import TodoList from './Component/todoList/todoList';
 import ListPost from './Component/posts/ListPosts';
 import PostDetail from './Component/posts/PostDetail';
+import ToastMessage from './Component/toastMessage/ToastMessage';
+import "./fontawesome"
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,6 +28,9 @@ function App() {
           </Route>
           <Route path="/post/:id">
             <PostDetail />
+          </Route>
+          <Route path="/toast">
+            <ToastMessage />
           </Route>
   </Switch> 
     </div>

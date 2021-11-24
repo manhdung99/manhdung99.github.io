@@ -11,6 +11,7 @@ export default function Nav() {
       <NavLink to="/button" activeClassName="active">BUTTON HOVER CSS</NavLink>
       <NavLink to="/todo" activeClassName="active">Todo List</NavLink>
       <NavLink to="/post" activeClassName="active">POST</NavLink>
+      <NavLink to="/toast" activeClassName="active">Toast Message</NavLink>
     </div>
   );
 }
