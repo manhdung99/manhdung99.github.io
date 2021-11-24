@@ -1,0 +1,106 @@
+.todo-container{
+    width: 700px ;
+    margin: auto;
+    background: #1298b5;
+    .todo-sort-button{
+        position: relative;
+        top: 240px;
+        left: -220px;
+        background: #ffc107;
+        border: none;
+        padding: 6px 4px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .title{
+        color: #fff;
+        text-transform: uppercase;
+        padding-top: 40px;
+    }
+    .add-new-note,.status-note,.remove-note,.update-note{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .add-new-note{
+        color: #e7bf64;
+    }
+    .status-note{
+        color: #42cd78;
+    }
+    .remove-note{
+        color: #095b6a;
+    }
+    .update-note{
+        color: #163b34;
+    }
+    .todo-input{
+        width: 480px;
+        height: 24px;
+        color: #737373;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        padding: 0 8px;
+    }
+    .add-button{
+        color: #1296b3;
+        background: #085564;
+        margin-left: 4px;
+        padding: 4px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .todo-list{
+        list-style: none;
+        padding-left: 100px;
+        .item-wrap{
+            display: flex;
+            align-items: center;
+            .todo-wrap{
+                width: 450px;
+                display: flex;
+                justify-content: center;
+                height: 32px;
+                margin: 5px 0;
+                background-color: #47b1c5;
+                border: 2px solid #0d6577;
+                border-radius: 4px;
+                .todo-item{
+                    padding-left: 24px;
+                    text-align: left;
+                    flex: 1;
+                    line-height: 32px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #fff;
+                    cursor: pointer;
+                }
+                .todo-close{
+                    color: #095766;
+                    line-height: 26px;
+                    padding-right: 24px;
+                    font-size: 18px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+            .todo-edit{
+                color: #1296b3;
+                background: #085564;
+                margin: 0 8px;
+                height: 34px;
+                width: 48px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .todo-status{
+                margin: 0 24px;
+                color: #42cd78;
+                font-size: 24px;
+            }
+        }
+
+    }
+}

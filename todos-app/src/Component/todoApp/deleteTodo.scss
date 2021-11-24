@@ -1,0 +1,40 @@
+.modal-content{
+    width: 500px;
+    top : 50px;
+  }
+.delete-wrap{
+  padding: 0 24px;
+  position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+  .delete-title{
+    text-align: center;
+    margin: 20px 0;
+  }
+  .delete-body{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .btn-delete-form{
+    padding: 8px 52px;
+    margin: 24px 32px;
+    border-radius: 4px;
+    border: none;
+    &:hover{
+      opacity: 0.8;
+    }
+    &.cancel-btn{
+      background: #ccc;
+      color: #000;
+      cursor: pointer;
+    }
+    &.delete-btn{
+      background: #f5564a;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
