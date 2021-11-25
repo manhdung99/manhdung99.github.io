@@ -1,13 +1,18 @@
 .toast-css{
     position: relative;
-    margin: 30px auto;
     background: #fff;
-    width: 400px;
-    height: 80px;
+    width: 350px;
+    height: 70px;
     display: flex;
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
+    top: 0px;
+    left: 1000px;
+    animation: sideInLeft 1s linear ,fadeOut linear 1s 3s forwards;
+    + .toast-css{
+        margin-top: 30px;
+    }
     &.success{
         border-left: #47d664 5px solid;
         .toast-icon{
@@ -43,5 +48,22 @@
         padding-right: 24px;
         font-size: 28px;
         color: #ccc;
+    }
+
+    @keyframes sideInLeft {
+        from{
+            opacity: 0;
+            transform: translateX(calc(100% + 24px));
+        }
+        to 
+        {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    @keyframes fadeOut {
+        to{
+            opacity: 0;
+        }
     }
 }

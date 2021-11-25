@@ -8,25 +8,9 @@ export default function ToastMessage() {
     const [toasts,setToasts] = useState([]);
 
     useEffect(()=>{
-        const data =[{
-            id:1,
-            type:'success',
-            title:'Success',
-            icon : faCheckCircle,
-            message:'Message'
-        },
-        {
-            id:2,
-            type:'success',
-            title:'Success',
-            icon : faCheckCircle,
-            message:'Message'
-        }]
-        setToasts(data)
+        
     },[])
     
-    
-
     const showToast = (type,message) =>{
         const icons = {
             success: faCheckCircle,
@@ -42,23 +26,34 @@ export default function ToastMessage() {
         const title = titles[type]
         
         const toastProperty = {
-            id:1,
+            id:Math.floor(Math.random()*10000),
             type:type,
             title:title,
             icon : icon,
             message:message
         }
-        console.log(toasts)
-        const newData = [...toasts];
-        console.log(newData)
-        setToasts(toastProperty);
-        console.log(toasts)
+        setToasts([...toasts,toastProperty]);
+        setTimeout(()=>{
+            autoClose(toastProperty.id);
+          },4000);
     }
+    const autoClose = (id) =>{
+        let data = toasts.filter(toast => toast.id !== id);
+        setToasts(data)
+    }
+    
     return (
         <div className ="toast--container" >
+            {console.log("render")}
             <button
             onClick = {() =>showToast('success', 'Success Message' )}
             >Success</button>
+            <button
+            onClick = {() =>showToast('warning', 'Warning Message' )}
+            >Warning</button>
+            <button
+            onClick = {() =>showToast('error', 'Error Message' )}
+            >Error</button>
             {toasts.length > 0 && toasts.map((toast,index) => (
                 <div key = {index} className = {"toast-css " + toast.type}>
                 <div className = "toast-icon  ">
@@ -75,49 +70,6 @@ export default function ToastMessage() {
                 </div>
                 </div>
             ))}
-
-            <div className = "toast-css success ">
-            <div className = "toast-icon  ">
-                <FontAwesomeIcon icon = {faCheckCircle} />
-            </div>
-            <div className = "toast-body">
-                <h4 className = "toast-body-title">Success</h4>
-                <p className = "toast-body-message">Success message Success message Success message Succe</p>
-            </div>
-            <div className = "toast-close">
-                <span>
-                    <FontAwesomeIcon icon = {faTimes} />
-                </span>
-            </div>
-            </div>
-            <div className = "toast-css warning ">
-            <div className = "toast-icon">
-                <FontAwesomeIcon icon = {faExclamationCircle} />
-            </div>
-            <div className = "toast-body">
-                <h4 className = "toast-body-title">Warning</h4>
-                <p className = "toast-body-message">Success message Success message Success message Succe</p>
-            </div>
-            <div className = "toast-close">
-                <span>
-                    <FontAwesomeIcon icon = {faTimes} />
-                </span>
-            </div>
-            </div>
-            <div className = " toast-css error ">
-            <div className = "toast-icon ">
-                <FontAwesomeIcon icon = {faExclamationCircle} />
-            </div>
-            <div className = "toast-body">
-                <h4 className = "toast-body-title">Error</h4>
-                <p className = "toast-body-message">Success message Success message Success message Succe</p>
-            </div>
-            <div className = "toast-close">
-                <span>
-                    <FontAwesomeIcon icon = {faTimes} />
-                </span>
-            </div>
-            </div>
         </div>
     )
 }
