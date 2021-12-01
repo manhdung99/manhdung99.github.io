@@ -1,4 +1,17 @@
 .todo-container {
+  .search-input{
+    margin-top: 20px;
+    width: 400px;
+    height: 38px;
+    background: #374151;
+    color: #668fab;
+    border: none;
+    border-radius: 16px;
+    padding-left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+  }
   .add-button {
     position: relative;
     background: #007bff;

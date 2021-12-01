@@ -5,10 +5,16 @@ const initState = {
     { id: 3, name: "Dung HOc Lap Trinh" },
   ],
   todos: [],
+  isLogin: localStorage.getItem('isLogin'),
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case "UPDATE_LOGIN":
+      return {
+        ...state,
+        isLogin: action.payload,
+      }
     case "LIST_TODO":
       return {
         ...state,
@@ -35,6 +41,13 @@ const rootReducer = (state = initState, action) => {
        let newTodos = [...state.todos];
        let objIndex = newTodos.findIndex((obj) => obj.id === action.payload.id);
        newTodos[objIndex] = action.payload;
+      return {
+        ...state,
+        todos: [...newTodos],
+      }};
+      case "FILTER_TODO":
+      {
+       let newTodos = [...action.payload];
       return {
         ...state,
         todos: [...newTodos],

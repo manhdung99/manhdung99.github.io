@@ -38,13 +38,15 @@ const PostDetail  = () =>{
     }
         return(
             <>
-            {loading === false && post &&  
                 <div className = "post-detail-container">
                 <h1 className = "post-id">Post Detail ID : {id}</h1>
+            {loading === false && post &&  
+            <>
                 <h3 className = "post-title">Title : {post.title}</h3>
                 <p className = "post-body">{post.body}</p>
-                </div>
+                </>
             }
+                </div>
             {loading === true && 
             <div className = "loading-wrap" >
                 <span className ="loading"> Loading...</span>

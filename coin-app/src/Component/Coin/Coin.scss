@@ -39,19 +39,22 @@
       }
     }
   }
-}
-.user-wrap {
-  margin: 0 16px;
-  display: flex;
-  align-items: center;
-  border-bottom: #639cd5 2px solid;
-  .user-icon{
-      fill:#639cd5 ;
+  .user-wrap {
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: #639cd5 2px solid;
+    .user-icon{
+        fill:#639cd5 ;
+    }
+    .user-name {
+      position: relative;
+      color: #639cd5;
+      margin-left: 8px;
+    }
   }
-  .user-name {
-    position: relative;
-    color: #639cd5;
-    margin-left: 8px;
+  .list-icon {
+    display: none;
   }
 }
 
@@ -69,14 +72,6 @@
       text-align: left;
       border-bottom: 2px solid #b0d2f4;
       padding-bottom: 12px;
-      &:after {
-        position: absolute;
-        content: "";
-        display: block;
-        color: #b0d2f4;
-        width: 500px;
-        height: 2px;
-      }
     }
     .body-watching {
       .watching-title {
@@ -115,16 +110,18 @@
             }
           }
           .watching-item-name {
+            margin: 0;
             position: absolute;
             font-size: 20px;
             color: #dfe8f2;
             left: 54px;
-            top: -15px;
+            top: 10px;
           }
           .watching-item-description {
+            margin: 0;
             position: absolute;
             color: #353d47;
-            top: 22px;
+            top: 32px;
             font-size: 13px;
             left: 54px;
           }
@@ -153,6 +150,7 @@
         margin: 16px;
       }
       .profile-content {
+        border-radius: 8px;
         background-color: #fff;
         position: relative;
         width: 1110px;

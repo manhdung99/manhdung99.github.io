@@ -1,0 +1,279 @@
+@media (max-width: 1200px) {
+  .body {
+    .container {
+      width: 90%;
+      .body-watching {
+        .watch-list {
+          width: 100%;
+          .watching-item {
+            width: 20%;
+            margin-left: 20px;
+            .watching-item-price {
+              font-size: 14px;
+              bottom: 20px;
+            }
+            .watching-item-change {
+              bottom: 12px;
+            }
+          }
+        }
+      }
+      .body-infomation {
+        .profile-content {
+          width: 100%;
+          .profile-heading {
+            width: 100%;
+            .profile-img {
+              width: 200px;
+              height: 200px;
+              .img {
+                top: 39%;
+                left: 39%;
+              }
+            }
+            .profile-image,
+            .img-input {
+              left: 264px;
+              width: calc(100% - 366px);
+            }
+            .browse-img-button {
+              width: 72px;
+              right: 20px;
+              left: auto;
+            }
+          }
+          .profile-body {
+            .profile-item {
+              box-sizing: border-box;
+              width: 50%;
+              padding: 0 22px;
+              .profile-input {
+                width: 100%;
+              }
+            }
+          }
+        }
+        .cancel-button {
+          left: 33%;
+        }
+        .save-button {
+          left: 34%;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .body {
+    .container {
+      width: 95%;
+      .body-watching {
+        .watch-list {
+          .watching-item {
+            margin-left: 10px;
+            .watching-item-icon {
+              margin: 8px;
+            }
+            .watching-item-name {
+              font-size: 16px;
+              left: 38%;
+              top: 8%;
+            }
+            .watching-item-description {
+              top: 22%;
+              font-size: 13px;
+              left: 38%;
+            }
+            .watching-item-price {
+              font-size: 14px;
+              bottom: 24px;
+            }
+            .watching-item-change {
+              bottom: 16px;
+            }
+          }
+        }
+      }
+      .body-infomation {
+        .profile-content {
+          .profile-heading {
+            width: 100%;
+            .profile-img {
+              margin: 16px 0 0 16px;
+              width: 24%;
+              height: 40%;
+              .img {
+                top: 39%;
+                left: 39%;
+              }
+            }
+            .profile-image,
+            .img-input {
+              left: 28.5%;
+            }
+            .profile-image {
+              text-align: left;
+            }
+            .img-input {
+              width: 56%;
+            }
+            .browse-img-button {
+              width: 10%;
+              left: calc(86%);
+            }
+          }
+        }
+        .cancel-button {
+          left: 182px;
+        }
+        .save-button {
+          left: 192px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  #main {
+    position: relative;
+  }
+  .header {
+    align-items: initial;
+    height: 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow: hidden;
+    .nav {
+      margin: 0;
+      display: block;
+      width: 100%;
+      .nav-item {
+        line-height: 48px;
+        height: 48px;
+        padding: 0 0 0 32px;
+        text-align: left;
+        &:hover {
+          background: #4a535e;
+        }
+      }
+    }
+    .user-wrap {
+      display: none;
+      .user-icon {
+        display: none;
+      }
+      .user-name {
+        display: none;
+      }
+    }
+    .list-icon {
+      display: block;
+      position: absolute;
+      padding: 8px 16px;
+      right: 0px;
+      top: 0;
+      font-size: 24px;
+      color: #fff;
+      &:hover {
+        background: #4a535e;
+      }
+    }
+  }
+  .body {
+    margin-top: 48px;
+    .container {
+      width: 95%;
+      .body-watching {
+        .watch-list {
+          .watching-item {
+            margin-left: 5px;
+            .watching-item-icon {
+              margin: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              top: 10px;
+            }
+            .watching-item-name {
+              display: none;
+            }
+            .watching-item-description {
+              display: none;
+            }
+            .watching-item-price {
+              font-size: 12px;
+              bottom: 24px;
+              margin: 0;
+              right: 0;
+              width: 100%;
+              top: 50%;
+            }
+            .watching-item-change {
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+      .body-infomation {
+        .profile-content {
+          height: auto;
+          .profile-heading {
+            .profile-img {
+              margin: 16px 0 0 16px;
+              width: 150px;
+              height: 150px;
+              .img {
+                top: 56px;
+                left: 52px;
+              }
+            }
+            .profile-image,
+            .img-input {
+              left: 175px;
+            }
+            .profile-image {
+              top: 42px;
+              width: auto;
+            }
+            .img-input {
+              top: 88px;
+              width: calc(100% - 175px - 70px);
+            }
+            .browse-img-button {
+              width: 54px;
+              left: null;
+              right: 8px;
+              top: 88px;
+            }
+          }
+          .profile-body {
+            margin: 0;
+          }
+        }
+        .cancel-button {
+          left: 10px;
+        }
+        .save-button {
+          left: 32px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 320px) {
+  .body {
+    .container {
+      .body-infomation {
+        .cancel-button {
+          left: 0px;
+        }
+        .save-button {
+          left: 4px;
+        }
+      }
+    }
+  }
+}

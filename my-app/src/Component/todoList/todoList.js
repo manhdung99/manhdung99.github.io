@@ -6,15 +6,25 @@ import AddTodo from "./addTodo";
 import DeleteTodo from "./deleteTodo";
 import { connect } from "react-redux";
 import EditTodo from "./editTodo";
+import { useHistory } from "react-router";
+import FilterTodo from "./filterTodo";
 
-const TodoList = ({ getListTodo, todos, updateTodo }) => {
+
+const TodoList = ({ getListTodo, todos, updateTodo,filterTodo,isLogin }) => {
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [todoDelete, setTodoDelete] = useState({});
   const [todoEdit, setTodoEdit] = useState({});
-
+  const history = useHistory()
   let isEmptyEditTodo = Object.keys(todoEdit).length === 0;
+  console.log(isLogin)
+  useEffect(() =>{
+    if(isLogin === false){
+        history.push("/login")
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
   useEffect(() => {
     const ourRequest = axios.CancelToken.source();
     async function fetchData() {
@@ -61,8 +71,17 @@ const TodoList = ({ getListTodo, todos, updateTodo }) => {
     setShowDeleteForm(true);
     setTodoDelete(todo);
   };
+  const onFilter = (value) =>{
+    if(value === ''){
+      
+    }
+    console.log(value)
+      let newdata = todos.filter(todo => todo.workName.indexOf(value)>0);
+      filterTodo(newdata);
+  }
   return (
     <div className="todo-container">
+      <FilterTodo onFilter = {onFilter} />
       <DeleteTodo
         showDeleteForm={showDeleteForm}
         handleCloseDeleteForm={handleCloseDeleteForm}
@@ -144,12 +163,14 @@ const TodoList = ({ getListTodo, todos, updateTodo }) => {
 const mapStateToProps = (state) => {
   return {
     todos: state.todos,
+    isLogin :state.isLogin
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getListTodo: (list) => dispatch({ type: "LIST_TODO", payload: list }),
     updateTodo: (todo) => dispatch({ type: "UPDATE_TODO", payload: todo }),
+    filterTodo: (todos) => dispatch({type:"FILTER_TODO",payload:todos})
   };
 };
 
