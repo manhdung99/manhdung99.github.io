@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/coin-app/static/css/main.5176f1f0.chunk.css",
+    "main.js": "/coin-app/static/js/main.565643d6.chunk.js",
+    "main.js.map": "/coin-app/static/js/main.565643d6.chunk.js.map",
+    "runtime-main.js": "/coin-app/static/js/runtime-main.5da04856.js",
+    "runtime-main.js.map": "/coin-app/static/js/runtime-main.5da04856.js.map",
+    "static/js/2.07f2c6e3.chunk.js": "/coin-app/static/js/2.07f2c6e3.chunk.js",
+    "static/js/2.07f2c6e3.chunk.js.map": "/coin-app/static/js/2.07f2c6e3.chunk.js.map",
+    "static/js/3.a4c2cc22.chunk.js": "/coin-app/static/js/3.a4c2cc22.chunk.js",
+    "static/js/3.a4c2cc22.chunk.js.map": "/coin-app/static/js/3.a4c2cc22.chunk.js.map",
+    "index.html": "/coin-app/index.html",
+    "static/css/main.5176f1f0.chunk.css.map": "/coin-app/static/css/main.5176f1f0.chunk.css.map",
+    "static/js/2.07f2c6e3.chunk.js.LICENSE.txt": "/coin-app/static/js/2.07f2c6e3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5da04856.js",
+    "static/js/2.07f2c6e3.chunk.js",
+    "static/css/main.5176f1f0.chunk.css",
+    "static/js/main.565643d6.chunk.js"
+  ]
+}
