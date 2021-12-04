@@ -12,7 +12,7 @@ export default function FilterTodo({onFilter}) {
             clearTimeout(typingTimeoutRef.current)
         }
 
-        typingTimeoutRef.current = setTimeout(() =>{
+        typingTimeoutRef.current = setTimeout(() =>{  
             onFilter(e.target.value)
         },1000)
     }

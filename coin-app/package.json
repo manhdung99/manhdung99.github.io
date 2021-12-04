@@ -17,6 +17,7 @@
     "cor": "0.0.0",
     "cors": "^2.8.5",
     "exact": "^0.8.0",
+    "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
     "react": "17.0.2",
     "react-bootstrap": "2.0.0",
@@ -31,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "http://manhdung99.github.io/coin-app"
 }

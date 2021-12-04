@@ -18,7 +18,6 @@ const TodoList = ({ getListTodo, todos, updateTodo,filterTodo,isLogin }) => {
   const [todoEdit, setTodoEdit] = useState({});
   const history = useHistory()
   let isEmptyEditTodo = Object.keys(todoEdit).length === 0;
-  console.log(isLogin)
   useEffect(() =>{
     if(isLogin === false){
         history.push("/login")
@@ -71,13 +70,15 @@ const TodoList = ({ getListTodo, todos, updateTodo,filterTodo,isLogin }) => {
     setShowDeleteForm(true);
     setTodoDelete(todo);
   };
-  const onFilter = (value) =>{
+  const onFilter = async (value) =>{
+    let res;
     if(value === ''){
-      
+      res = await axios.get('http://localhost:8081/todo/listAll')
+    }else{
+      res = await axios.get(`http://localhost:8081/todo/search/${value}`)
     }
-    console.log(value)
-      let newdata = todos.filter(todo => todo.workName.indexOf(value)>0);
-      filterTodo(newdata);
+    console.log(res.data)
+      filterTodo(res.data);
   }
   return (
     <div className="todo-container">
